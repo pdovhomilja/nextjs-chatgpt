@@ -13,10 +13,10 @@ const SideBar = () => {
     session &&
       query(
         collection(db, "users", session?.user?.email!, "chats"),
-        orderBy("createdAt", "asc")
+        orderBy("createdAt", "desc")
       )
   );
-  console.log(chats);
+  //console.log(chats);
   return (
     <div className="p-2 flex flex-col h-screen">
       <div className="flex-1">
@@ -64,7 +64,7 @@ const SideBar = () => {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center pt-4">
-        <p className="text-white text-center text-xs">version: 0.0.1</p>
+        <p className="text-white text-center text-xs">version: 0.0.2</p>
       </div>
     </div>
   );

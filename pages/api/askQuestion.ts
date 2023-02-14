@@ -24,6 +24,7 @@ export default async function handler(
   }
 
   //ChatGPT Query
+  console.log(chatId, model, "ChatGPT Query");
   const response = await query(prompt, chatId, model);
 
   const message: Message = {
