@@ -39,8 +39,12 @@ function Chat({ chatId }: Props) {
           <ArrowDownCircleIcon className="h-10 w-10 mx-auto mt-5 text-white animate-bounce" />
         </>
       )}
-      {messages?.docs.map((message) => (
-        <Message key={message.id} message={message.data()} />
+      {messages?.docs.map((message, index) => (
+        <Message
+          key={message.id}
+          message={message.data()}
+          last={index === messages.docs.length - 1}
+        />
       ))}
     </div>
   );
