@@ -1,10 +1,17 @@
 import openai from "./chatgpt";
 
-const query = async (prompt: string, chatId: string, model: string) => {
+const query = async (
+  prompt: string,
+  combinedPrompt: string,
+  chatId: string,
+  model: string,
+  session: any
+) => {
   const res = await openai
     .createCompletion({
       model,
-      prompt,
+      //prompt,
+      prompt: combinedPrompt,
       temperature: 0.9,
       top_p: 1,
       max_tokens: 1000,

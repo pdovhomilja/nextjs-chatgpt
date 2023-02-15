@@ -23,9 +23,28 @@ export default async function handler(
     return;
   }
 
+  // Retrieve the conversation history from Firebase
+  const conversationRef = adminDb
+    .collection("users")
+    .doc(session?.user?.email)
+    .collection("chats")
+    .doc(chatId)
+    .collection("messages")
+    .orderBy("createdAt", "asc");
+  const snapshot = await conversationRef.get();
+  const conversation = snapshot.docs.map((doc) => doc.data());
+
+  // Combine the previous prompts and the current prompt
+  const prompts = conversation.map((item) => item.text);
+  prompts.push(prompt);
+  const combinedPrompt = prompts.join("\n");
+
+  console.log(combinedPrompt, "combinedPrompt");
+
+  const response = await query(combinedPrompt, prompt, chatId, model, session);
   //ChatGPT Query
   console.log(chatId, model, "ChatGPT Query");
-  const response = await query(prompt, chatId, model);
+  // const response = await query(prompt, chatId, model, session);
   //console.log(response, "response");
 
   const message: Message = {

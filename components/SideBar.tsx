@@ -64,7 +64,9 @@ const SideBar = () => {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center pt-4">
-        <p className="text-white text-center text-xs">version: 0.0.2</p>
+        <p className="text-white text-center text-xs">
+          version: {process.env.NEXT_PUBLIC_APP_VERSION}
+        </p>
       </div>
     </div>
   );
