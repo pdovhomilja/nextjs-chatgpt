@@ -39,7 +39,7 @@ export default async function handler(
   prompts.push(prompt);
   const combinedPrompt = prompts.join("\n");
 
-  console.log(combinedPrompt, "combinedPrompt");
+  //console.log(combinedPrompt, "combinedPrompt");
 
   const response = await query(combinedPrompt, prompt, chatId, model, session);
   //ChatGPT Query
